@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gavriel's Discord Bot Shop</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0e1117;
+      color: #ffffff;
+    }
+
+    header {
+      background-color: #1f2937;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      color: #0dacff;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      background-color: #111827;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .bots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .bot-card {
+      background-color: #1e293b;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(13, 172, 255, 0.1);
+    }
+
+    .bot-card h3 {
+      margin-top: 0;
+      color: #0dacff;
+    }
+
+    .btn {
+      background-color: #0dacff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+    }
+
+    .faq {
+      background-color: #111827;
+      padding: 20px;
+      border-radius: 12px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1f2937;
+      color: #aaa;
+      margin-top: 40px;
+    }
+
+    #formModal {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #formModal .form-box {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+    }
+
+    #formModal input,
+    #formModal textarea {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      font-family: inherit;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Gavriel's Discord Bot Shop</h1>
+    <p>בוטים מקצועיים לדיסקורד במחירים נוחים!</p>
+  </header>
+
+  <nav>
+    <a href="#about">מידע עלי</a>
+    <a href="#store">חנות</a>
+    <a href="#custom">התאמה אישית</a>
+    <a href="#faq">שאלות נפוצות</a>
+    <a href="#contact">צור קשר</a>
+  </nav>
+
+  <section id="about">
+    <h2>👨‍💻 מידע עליי</h2>
+    <p>שלום שמי גבריאל, ואני מתכנת עם ניסיון של מעל 3 וחצי שנים בפיתוח בוטים לדיסקורד. אני בן 16.5, ועוסק גם בפיתוח בשפות כמו Java, Python ו-HTML.</p>
+    <p>לאורך השנים יצרתי בוטים עבור יוטיוברים ואנשים פרטיים, וכל פרויקט שאני לוקח עליו – נעשה בצורה מקצועית, עם שירות לקוחות מעולה ובאיכות גבוהה במיוחד.</p>
+    <p>אצלי, כולם שווים, וכולם מקבלים את השירות הטוב ביותר – לא משנה אם אתה לקוח גדול או קטן.</p>
+    <p>כשאני בונה בוט – חשוב לי שהוא יהיה איכותי, ברור ונוח לשימוש, ושאתה תצא ממנו מרוצה עד הסוף 💙.</p>
+  </section>
+
+  <section id="store">
+    <h2>🔧 חנות הבוטים</h2>
+    <div class="bots">
+      <div class="bot-card">
+        <h3>🎟️ Ticket Bot</h3>
+        <p>מערכת טיקטים עם קליים, סגירה ולוגים</p>
+        <p><strong>30 ₪</strong></p>
+        <button class="btn" onclick="openOrderForm('Ticket Bot')">לרכישה</button>
+      </div>
+      <div class="bot-card">
+        <h3>🎉 Giveaway Bot</h3>
+        <p>הגרלות עם כפתורים, זמן סיום ולוג</p>
+        <p><strong>40 ₪</strong></p>
+        <button class="btn" onclick="openOrderForm('Giveaway Bot')">לרכישה</button>
+      </div>
+      <div class="bot-card">
+        <h3>📨 Invite Tracker</h3>
+        <p>מעקב אחרי מי הזמין את מי + סטטיסטיקות</p>
+        <p><strong>45 ₪</strong></p>
+        <button class="btn" onclick="openOrderForm('Invite Tracker')">לרכישה</button>
+      </div>
+      <div class="bot-card">
+        <h3>🧠 Personalized bot</h3>
+        <p>פיתוח בוט מותאם אישית לצרכים שלך</p>
+        <p><strong>החל מ-70 ₪</strong></p>
+        <button class="btn" onclick="openOrderForm('Personalized bot')">לרכישה</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="custom">
+    <h2>✏️ רוצה בוט/מערכת מותאם אישית?</h2>
+    <p>יש למלא את הטופס הבא ונחזור אליך בהקדם האפשרי עם הצעת מחיר!</p>
+    <button class="btn" onclick="openOrderForm('Custom Bot')">טופס הזמנה</button>
+  </section>
+
+  <section id="faq">
+    <h2>📌 שאלות נפוצות</h2>
+    <div class="faq">
+      <p><strong>מה זמן האספקה?</strong><br>בין 1 ל-3 ימי עסקים לבוטים רגילים.</p>
+      <p><strong>האם יש אחריות?</strong><br>כן! 30 ימי אחריות לכל בוט שנרכש.</p>
+      <p><strong>איך אני משלם?</strong><br>באמצעות ביט / העברה בנקאית</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>📞 צור קשר</h2>
+    <p>לשאלות, תמיכה או רכישה - הצטרפו לשרת הדיסקורד:</p>
+    <button class="btn" onclick="window.location.href='https://discord.gg/KfxBSwfv9S'">הצטרף עכשיו</button>
+  </section>
+
+  <div id="formModal">
+    <div class="form-box">
+      <h2 style="color:#0dacff;">📝 הזמנת בוט</h2>
+      <input type="text" id="name" placeholder="השם שלך">
+      <input type="text" id="discord" placeholder="שם הדיסקורד שלכם">
+      <input type="text" id="bot" placeholder="איזה בוט אתה רוצה?">
+      <textarea id="details" placeholder="פרטים נוספים (לא חובה)"></textarea>
+      <button onclick="submitOrder()" class="btn">שלח הזמנה</button>
+      <button onclick="closeForm()" class="btn" style="margin-top:10px; background:#444;">סגור</button>
+    </div>
+  </div>
+
+  <script>
+    function openOrderForm(botName = '') {
+      document.getElementById('formModal').style.display = 'flex';
+      document.getElementById('bot').value = botName;
+    }
+
+    function closeForm() {
+      document.getElementById('formModal').style.display = 'none';
+      resetForm();
+    }
+
+    function resetForm() {
+      document.getElementById('name').value = '';
+      document.getElementById('discord').value = '';
+      document.getElementById('bot').value = '';
+      document.getElementById('details').value = '';
+    }
+
+    function submitOrder() {
+      const name = document.getElementById('name').value.trim();
+      const discord = document.getElementById('discord').value.trim();
+      const bot = document.getElementById('bot').value.trim();
+      const details = document.getElementById('details').value.trim();
+
+      if (!name || !discord || !bot) {
+        alert("אנא מלא את כל השדות החובה!");
+        return;
+      }
+
+      const webhookURL = "https://discord.com/api/webhooks/1362503441032675459/KDrmDJzq9P4BySYM6313c2s3sLIvjOFGH4jMsFJZjRvH2mbsoo2eW9EI9nZW07qb6dpB";
+      const data = {
+        content: `__**התקבלה הזמנה חדשה! :inbox_tray:**__\n\n**:bust_in_silhouette: שם לקוח: ${name} :bust_in_silhouette:**\n**:speech_balloon: משתמש דיסקורד: ${discord} :speech_balloon:**\n**:robot: הבוט/הזמנה שהלקוח בחר: ${bot} :robot:**\n**:page_facing_up: פרטים נוספים/הערות: ${details || 'אין'} :page_facing_up:**`,
+      };
+
+      fetch(webhookURL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      }).then(response => {
+        if (response.ok) {
+          alert("ההזמנה שלך נשלחה בהצלחה! - ניצור איתך קשר בדיסקורד בהקדם האפשרי. 🙏");
+          closeForm();
+        } else {
+          alert("חלה שגיאה בשליחה. אנא נסה שנית.");
+        }
+      });
+    }
+  </script>
+
+  <footer>
+    © 2025 Gavriel's Bot Shop | כל הזכויות שמורות
+  </footer>
+</body>
+
+</html>
